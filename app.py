@@ -1,5 +1,4 @@
-
-    import streamlit as st
+import streamlit as st
 
 from backend.utils import load_data
 from backend.client import Client
