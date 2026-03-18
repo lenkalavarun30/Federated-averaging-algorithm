@@ -1,7 +1,5 @@
-import streamlit as st
 
-import sys, os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    import streamlit as st
 
 from backend.utils import load_data
 from backend.client import Client
@@ -30,4 +28,4 @@ if uploaded_file:
     output = model(img_tensor)
     prediction = torch.argmax(output, dim=1).item()
 
-    st.success(f"Prediction: {prediction}")
+    st.success(f"Prediction: {prediction}")}")
