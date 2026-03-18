@@ -1,5 +1,8 @@
 import streamlit as st
 
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from backend.utils import load_data
 from backend.client import Client
 from backend.federated import federated_training
