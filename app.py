@@ -1,13 +1,12 @@
 import streamlit as st
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from backend.utils import load_data
 from backend.client import Client
 from backend.federated import federated_training
+
 from PIL import Image
 import torch
+import numpy as np
 
 st.title("Federated Learning Image Classifier")
 
@@ -22,7 +21,8 @@ if uploaded_file:
 
     model = federated_training(clients)
 
-    img_tensor = torch.tensor(image.resize((28,28))).float().unsqueeze(0).unsqueeze(0)
+    img = np.array(image.resize((28,28))) / 255.0
+    img_tensor = torch.tensor(img).float().unsqueeze(0).unsqueeze(0)
 
     output = model(img_tensor)
     prediction = torch.argmax(output, dim=1).item()
